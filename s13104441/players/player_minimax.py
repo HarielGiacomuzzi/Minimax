@@ -6,17 +6,18 @@ from player import Player
 from util import *
 
 # ==========================================
-# Player Alphabeta
+# Player Minimax
 # ==========================================
 
-class AlphabetaPlayer(Player):
+class MinimaxPlayer(Player):
 
     # ------------------------------------------
     # Initialize
     # ------------------------------------------
 
     def __init__(self, symbol):
-        super(AlphabetaPlayer, self).__init__(symbol)
+        super(MinimaxPlayer, self).__init__(symbol)
+
 
     def begin(self,board):
         root = TreeNode()
@@ -57,8 +58,6 @@ class AlphabetaPlayer(Player):
             aux.board = self.applyMove(list(startNode.board),index,aux.symbol)
             startNode.children.append(aux)
             self.createTree(aux)
-        #for child in startNode.children:
-        #    self.createTree(child)
         maximun = -sys.maxint
         minimum = sys.maxint
         for child in startNode.children:
@@ -105,7 +104,33 @@ class AlphabetaPlayer(Player):
     # ------------------------------------------
 
     def get_next_move(self, board):
-        return None#self.begin(board)
+
+        #return self.decision(board)
+        #return self.start(board)
+        return self.begin(board)
+
+        # TODO Here you will implement the Minimax algorithm.
+        # This method may return the best movement based on Minimax score
+        # for the current board.
+
+        # If you want, you can use here some helper functions:
+        #
+        # - find_winner(board): This method checks if someone wins in the
+        #   parametrized board and return a tuple (Winner, Winner movement).
+        #
+        # - find_empty_cells(board): This method checks if there are available
+        #   moves in the parametrized board. It returns an array containing
+        #   the available moves.
+        #
+        # - print_board(board): This method helps you debugging your code.
+        #   It prints a board filled with the executed moves.
+        #   WARNING: printing can slow your code. Use it just for debug.
+        #
+
+        #return None
+
+
+
 
 class TreeNode:
     def __init__(self):
